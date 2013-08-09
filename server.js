@@ -55,6 +55,7 @@ app.configure( function() {
     .use( lessMiddleware({
       once: config.OPTIMIZE_CSS,
       dest: tmpDir,
+      debug: config.DEBUG,
       src: WWW_ROOT,
       compress: config.OPTIMIZE_CSS,
       yuicompress: config.OPTIMIZE_CSS,
