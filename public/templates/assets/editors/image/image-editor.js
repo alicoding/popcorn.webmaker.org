@@ -268,7 +268,7 @@
           var count = prop.count > 0 ? prop.count : 1;
 
           if ( count > _maxImageCount ) {
-            _this.setErrorState( Butter.localized.get( "Error: Image count must not be greater than" ) + _maxImageCount + "." );
+            _this.setErrorState( Butter.localized.get( "Error: Image count must not be greater than" ) + " " + _maxImageCount + "." );
             return;
           }
 
