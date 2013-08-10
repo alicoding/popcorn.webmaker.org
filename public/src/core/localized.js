@@ -18,11 +18,11 @@ define( [ "../util/xhr" ], function( xhr ) {
       _readyCallback();
     }
 
-    domReady();    
+    domReady();
   }
 
-  // Get the current lang from the document's HTML element, which the                                                                             
-  // server set when the page was first rendered. This saves us having                                                                            
+  // Get the current lang from the document's HTML element, which the
+  // server set when the page was first rendered. This saves us having
   // to pass extra locale info around on the URL.
   function getCurrentLang() {
     var html = document.querySelector( "html" );
@@ -44,7 +44,7 @@ define( [ "../util/xhr" ], function( xhr ) {
 
     getCurrentLang: getCurrentLang,
 
-    // Localized strings are ready                                                                                                                
+    // Localized strings are ready
     ready: function( cb ) {
       _readyCallback = cb;
       if ( _isReady ) {
