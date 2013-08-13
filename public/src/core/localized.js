@@ -1,9 +1,10 @@
-define( [ "../util/xhr" ], function( xhr ) {
+define( [ "json" ], function( json ) {
   var _strings,
       _readyCallback,
-      _isReady = false;
+      _isReady = false,
+      _requestedStrings = false;
 
-  function ready( json ) {
+  function ready( data ) {
      _readyCallback = _readyCallback || function(){};
 
     function domReady() {
@@ -13,7 +14,7 @@ define( [ "../util/xhr" ], function( xhr ) {
         return;
       }
       document.onreadystatechange = null;
-      _strings = json;
+      _strings = data;
       _isReady = true;
       _readyCallback();
     }
@@ -29,10 +30,6 @@ define( [ "../util/xhr" ], function( xhr ) {
     return html && html.lang ? html.lang : "en-US";
   }
 
-  xhr.get( "/strings/" + getCurrentLang(), function( res ) {
-    ready( res );
-  });
-
   return {
     get: function( key ) {
       if ( !_strings ) {
@@ -46,6 +43,14 @@ define( [ "../util/xhr" ], function( xhr ) {
 
     // Localized strings are ready
     ready: function( cb ) {
+      if ( !_requestedStrings ) {
+        _requestedStrings = true;
+        json.load( "/strings/" + getCurrentLang(),
+          require,
+          function callback( data ) { ready( data ); },
+          {}
+        );
+      };
       _readyCallback = cb;
       if ( _isReady ) {
         _readyCallback();

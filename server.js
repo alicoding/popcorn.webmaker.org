@@ -84,6 +84,7 @@ app.configure( function() {
         }
       },
       defaults: {
+        name: "../external/require/require",
         baseUrl: WWW_ROOT + "/src/",
         findNestedDependencies: true,
         optimize: "none",
@@ -100,7 +101,7 @@ app.configure( function() {
   // Setup locales with i18n
   app.use( i18n.abide({
     supported_languages: [
-      "en-US", "th-TH"
+      "en-US", "th-TH", "ru"
     ],
     default_lang: "en-US",
     translation_type: "key-value-json",

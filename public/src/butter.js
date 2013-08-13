@@ -74,6 +74,8 @@ window.Butter = {
 
     var Butter = {};
 
+    Butter.localized = Localized;
+
     Butter.ToolTip = ToolTip;
 
     Butter.init = function( butterOptions ) {
@@ -938,8 +940,6 @@ window.Butter = {
 
         _this.loader = loader;
 
-        Butter.localized = Localized;
-
         _this.ui = new UI( _this  );
         _this.ui.load(function(){
 
@@ -1034,8 +1034,8 @@ window.Butter = {
 
   // butter depends on popcorn, so don't change this unless you know what you're doing
   require([ "core/localized", "util/shims" ], function( Localized ) {
-    Localized.ready( function(){
-      require([ "popcorn" ], function() {
+    require([ "popcorn" ], function() {
+      Localized.ready( function(){
         require([ "butter-main" ]);
       });
     });
