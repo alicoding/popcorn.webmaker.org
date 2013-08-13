@@ -7,15 +7,15 @@
   **/
 define( [ 'text', 'core/localized' ], function ( text, localized ) {
   return {
-  	load: function(name, req, onLoad, config) {
-			// Do not bother with the work if a build and text will
-			// not be inlined.
-			if ( config.isBuild ) {
-				onLoad();
-				return;
-			}
-			name = name.replace( /^\//, "/" + localized.getCurrentLang() + "/" );
-			text.load(name, req, onLoad, config);
-		}
-	};
+    load: function(name, req, onLoad, config) {
+      // Do not bother with the work if a build and text will
+      // not be inlined.
+      if ( config.isBuild ) {
+        onLoad();
+        return;
+      }
+      name = name.replace( /^\//, "/" + localized.getCurrentLang() + "/" );
+      text.load(name, req, onLoad, config);
+    }
+  };
 });
