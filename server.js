@@ -101,7 +101,7 @@ app.configure( function() {
   // Setup locales with i18n
   app.use( i18n.abide({
     supported_languages: [
-      "en-US", "th-TH", "ru"
+      "en-US", "th-TH"
     ],
     default_lang: "en-US",
     translation_type: "key-value-json",

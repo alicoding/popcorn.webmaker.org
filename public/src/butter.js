@@ -944,8 +944,7 @@ window.Butter = {
         _this.ui.load(function(){
 
           if ( !acceptedUA ) {
-            var UA_WARNING_TEXT = Localized.get( "UA_WARNING_TEXT" );
-            Warn.showWarning( UA_WARNING_TEXT );
+            Warn.showWarning( Localized.get( "UA_WARNING_TEXT" ) );
           }
 
           //prepare the page next
@@ -994,7 +993,7 @@ window.Butter = {
             });
           });
         });
-    } //readConfig
+      } //readConfig
 
       if( butterOptions.config && typeof( butterOptions.config ) === "string" ){
         xhr.get( butterOptions.config, function( response ) {

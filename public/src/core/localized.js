@@ -45,13 +45,13 @@ define( [ "json" ], function( json ) {
     ready: function( cb ) {
       if ( !_requestedStrings ) {
         _requestedStrings = true;
+        _readyCallback = cb;
         json.load( "/strings/" + getCurrentLang(),
           require,
           function callback( data ) { ready( data ); },
           {}
         );
       };
-      _readyCallback = cb;
       if ( _isReady ) {
         _readyCallback();
       }
