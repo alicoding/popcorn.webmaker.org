@@ -46,9 +46,15 @@ define( [ "json" ], function( json ) {
       if ( !_requestedStrings ) {
         _requestedStrings = true;
         _readyCallback = cb;
+
+        function onload( data ) {
+          ready( data );
+        }
+        onload.error = console.log;
+
         json.load( "/strings/" + getCurrentLang(),
           require,
-          function callback( data ) { ready( data ); },
+          onload,
           {}
         );
       };
