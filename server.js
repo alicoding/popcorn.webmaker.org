@@ -19,7 +19,7 @@ var express = require('express'),
     middleware,
     APP_HOSTNAME = config.hostname,
     WWW_ROOT =  __dirname + '/public',
-    i18n = require( 'i18n-abide' );
+    i18n = require( 'webmaker-i18n' );
 
 
 nunjucksEnv.addFilter( "instantiate", function( input ) {
@@ -99,13 +99,13 @@ app.configure( function() {
     .use( express.static( WWW_ROOT, JSON.parse( JSON.stringify( config.staticMiddleware ) ) ) );
 
   // Setup locales with i18n
-  app.use( i18n.abide({
+  app.use( i18n.middleware({
     supported_languages: [
       "en-US", "th-TH"
     ],
     default_lang: "en-US",
     translation_type: "key-value-json",
-    translation_directory: "locale",
+    translation_directory: path.join( __dirname, "locale" ),
     locale_on_url: true
   }));
 

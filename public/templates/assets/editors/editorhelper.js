@@ -144,14 +144,16 @@
           onMouseDown,
           onMouseUp,
           onDblClick;
-
-      require( [ "ui/widget/tooltip" ], function( ToolTip ) {
-        toolTip = ToolTip.create({
-          element: dragContainer,
-          message: options.tooltip || "Double click to edit",
-          marginTop: "10px"
+          
+      Localized.ready(function(){
+        require( [ "ui/widget/tooltip" ], function( ToolTip ) {
+          toolTip = ToolTip.create({
+            element: dragContainer,
+            message: options.tooltip || Localized.get( "Double click to edit" ),
+            marginTop: "10px"
+          });
+          toolTip.hidden = false;
         });
-        toolTip.hidden = false;
       });
 
       onBlur = function() {
