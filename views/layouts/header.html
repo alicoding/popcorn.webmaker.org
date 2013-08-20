@@ -1,5 +1,5 @@
 <div class="butter-header" data-butter-exclude>
-  <script src="{{user_bar}}/js/sso-ux.js"></script>
+  <script src="{{user_bar}}/{{lang}}/js/sso-ux.js"></script>
   <header class="butter-header-primary">
     <div class="butter-logo"></div>
     <ul class="butter-nav">
@@ -27,12 +27,12 @@
       <nav class="webmaker-nav-container">
         <ul class="webmaker-nav user-info">
           <li class="user">
-              Hi <span id="identity" class="user-name-container"></span>
+              {{ gettext("Hi") }} <span id="identity" class="user-name-container"></span>
           </li>
           <li class="tutorial-btn hidden"><button>{{ gettext("Tutorials") }}</button></li>
           <li class="makes"><button>{{ gettext("My makes") }}</button></li>
           <li>
-            <iframe src="{{audience}}/sso/include.html" class="include-frame"></iframe>
+            <iframe src="{{audience}}/{{lang}}/sso/include.html" class="include-frame"></iframe>
           </li>
         </ul>
       </nav>
