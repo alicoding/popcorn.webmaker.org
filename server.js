@@ -20,6 +20,7 @@ var express = require( "express" ),
     ]),
     app = express(),
     lessMiddleware = require( "less-middleware" ),
+    rtltrForLess = require("rtltr-for-less"),
     requirejsMiddleware = require( "requirejs-middleware" ),
     config = require( "./lib/config" ),
     Project,
@@ -36,6 +37,11 @@ var express = require( "express" ),
 nunjucksEnv.addFilter( "instantiate", function( input ) {
     var tmpl = new nunjucks.Template( input );
     return tmpl.render( this.getVariables() );
+});
+
+// Make the client-side gettext possible!!
+nunjucksEnv.addFilter("gettext", function (string) {
+  return this.lookup('gettext')(string);
 });
 
 nunjucksEnv.express( app );
@@ -78,14 +84,14 @@ app.configure( function() {
     app.enable( "trust proxy" );
   }
   app.use( express.compress() )
-    .use( lessMiddleware({
+    .use( lessMiddleware(rtltrForLess({
       once: config.OPTIMIZE_CSS,
       dest: tmpDir,
       src: WWW_ROOT,
       compress: config.OPTIMIZE_CSS,
       yuicompress: config.OPTIMIZE_CSS,
       optimization: config.OPTIMIZE_CSS ? 0 : 2
-    }))
+    })))
     .use( requirejsMiddleware({
       src: WWW_ROOT,
       dest: tmpDir,
@@ -160,7 +166,8 @@ app.configure( function() {
   app.use(function (req, res, next) {
     res.locals({
       currentPath: req.path,
-      returnPath: req.param( "page" )
+      returnPath: req.param( "page" ),
+      gettext: req.gettext
     });
     next();
   });

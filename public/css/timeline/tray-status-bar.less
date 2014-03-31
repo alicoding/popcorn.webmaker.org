@@ -1,13 +1,10 @@
 /*********************************************************
 * TRAY STATUS
 */
-@_statusContainerHeight: 25px;
-@_playButtonHeight: 20px;
-@_scrubberBarHeight: 8px;
-@_scrubberHandleHeight: 10px;
-@_traySideWidth: 129px;
-@_timebarRight: 27px;
-@_buttonColour: #949494;
+
+@import "../variables";
+@import "../globals";
+
 
 /*********************************************************
 * Butter Status Area - The top bar in the tray
@@ -72,9 +69,10 @@
   height: 100%;
   .fill-bar {
     background: @green;
+    float: left;
     border-radius: 15px;
     height: @_scrubberBarHeight;
-    position: absolute;
+    position: relative;
     cursor: pointer;
     top: 0;
   }
@@ -246,30 +244,56 @@
   margin: 0;
 }
 
+html[dir="ltr"] & {
+  .play-button-container {
+    margin-left: 10px;
+  }
+}
+html[dir="rtl"] & {
+  .play-button-container {
+    margin-right: 10px;
+  }
+}
+
 .play-button-container {
   position: relative;
   float: left;
   height: 100%;
   width: @_playButtonHeight + 10px;
-  margin-left: 10px;
   margin-top: 5px;
 
   .status-button {
-    width: 21px;
     height: 21px;
     line-height: 21px;
-    border-radius: 25px;
-
-    .icon {
-      margin-left: 2px;
+    border-radius: 200%;
+    width: 1px;
+    html[dir="rtl"] & {
+      .icon {
+        margin: -5px;
+      }
+    }
+    html[dir="ltr"] & {
+      .icon {
+        margin: -3px;
+      }
     }
   }
 
   .status-button[data-state="true"] {
-    .icon {
-      margin-left: 0;
-      &:before {
-        content: "\f04c"; //pause
+    html[dir="rtl"] & {
+      .icon {
+        margin: -5px;
+        &:before {
+          content: "\f04c"; //pause
+        }
+      }
+    }
+    html[dir="ltr"] & {
+      .icon {
+        margin: -5px;
+        &:before {
+          content: "\f04c"; //pause
+        }
       }
     }
   }

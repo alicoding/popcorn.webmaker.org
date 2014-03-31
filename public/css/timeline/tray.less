@@ -2,6 +2,9 @@
 * TRAY
 */
 
+@import "../variables";
+@import "../globals";
+
 // Adds room to bottom of template for tray
 .butter-tray-spacing {
   padding-bottom: @TRAY_SPACING;
@@ -13,12 +16,16 @@
 }
 
 .butter-editor-spacing.editor-open .butter-tray {
-  right: @EDITOR_WIDTH;
+  position: absolute;
+}
+
+.butter-tray.butter-tray-transitions {
+  position: absolute;
 }
 
 .butter-tray {
   background: #FFF;
-  position: fixed;
+  position: relative;
   z-index: @TRAY_Z_INDEX;
   height: @TRAY_HEIGHT;
   left: 0;

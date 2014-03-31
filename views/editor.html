@@ -10,14 +10,17 @@
   <meta name="persona-email" content="{{personaEmail}}">
   <link rel="stylesheet" href="/static/bower/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/bower/farbtastic/farbtastic.css">
-  <link rel="stylesheet" href="/templates/basic/style.css">
-  <link rel="stylesheet" href="/static/bower/nav-global/nav.css">
-  <link rel="stylesheet" href="/templates/assets/css/jquery-ui/jquery.ui.butter.css">
+  <link rel="stylesheet" href="/templates/basic/style.{{localeInfo.direction}}.css">
+  <link rel="stylesheet" href="/templates/assets/css/jquery-ui/jquery.ui.butter.{{localeInfo.direction}}.css">
+  <link rel="stylesheet" href="/css/timeline/tray-timeline.ltr.css">
+  <link rel="stylesheet" href="/css/timeline/tray.ltr.css">
+  <link rel="stylesheet" href="/css/timeline/tray-status-bar.ltr.css">
+  <link rel="stylesheet" href="/css/timeline/super-scrollbar.ltr.css">
 
   <script src="https://cdn.optimizely.com/js/206878104.js"></script>
   <script src="/external/jwplayer.js"></script>
   <script src="https://login.persona.org/include.js"></script>
-  <link rel="stylesheet" href="/css/transitions.css">
+  <link rel="stylesheet" href="/css/transitions.{{localeInfo.direction}}.css">
   <link rel="stylesheet" href="/templates/assets/plugins/popup/popcorn.popup.css">
   <link rel="stylesheet" href="/templates/assets/plugins/image/popcorn.image.css">
   <link rel="stylesheet" href="/templates/assets/plugins/text/popcorn.text.css">
@@ -45,6 +48,8 @@
 
   {% include "/static/bower/webmaker-auth-client/create-user/create-user-form.html" %}
   <div class="body-wrapper">
+
+  <div class="stage-wrapper">
     <div id="embed-wrapper" class="wrapper cf faded embed">
       <div id="video-container" class="video-container" data-butter="target">
         <div id="video" class="video" data-butter="media"></div>
@@ -54,6 +59,7 @@
         <div class="sidebar-inner"></div>
       </div>
     </div>
+  </div>
   </div>
   {% if togetherjsEnabled %}
     <script src="/src/editor/disableWebRTC.js"></script>

@@ -1,4 +1,6 @@
-@_superScrollbarHeight: 32px;
+
+@import "../variables";
+@import "../globals";
 
 #butter-super-scrollbar-outer-container {
   position: relative;
@@ -68,14 +70,20 @@
   background: darken( @baseLight, 3% );
   height: @_superScrollbarHeight;
   position: absolute;
-  left: @_trackHandleWidth;
   width: 100%;
-  right: -7px;
   bottom: -@_superScrollbarHeight;
   border: 1px solid @baseLightOutline;
   margin-right: 5px;
   top: 0;
   box-shadow: inset 2px 0 5px -2px rgba( 0, 0, 0, 0.2 );
+  html[dir="ltr"] {
+    left: @_trackHandleWidth;
+    right: -7px;
+  }
+  html[dir="ltr"] {
+    right: @_trackHandleWidth;
+    left: -7px;
+  }
 }
 
 #butter-super-scrollbar-visuals {

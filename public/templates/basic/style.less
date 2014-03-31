@@ -1,4 +1,5 @@
 @import "../../css/globals.less";
+@import (less) "../../static/bower/nav-global/nav.css";
 
 /* ===== Primary Styles ========================================================
    Author: @k88hudson
@@ -10,15 +11,16 @@
     0 25px 5px -20px rgba( 0, 0, 0, 0.5 );
 }
 
-/* body-wrapper required to circumvent this bug in webkit: https://bugs.webkit.org/show_bug.cgi?id=77811 */
 .body-wrapper {
-  position: absolute;
+  top: 0;
   left: 0;
-  top: 62px; /* compensate for header */
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
   .editor-open & {
     right: @EDITOR_WIDTH;
   }
-  right: 0;
   .tray-minimized & {
     bottom: @CONTROLS_HEIGHT;
   }
@@ -30,7 +32,17 @@
   transition: right 0.25s;
 }
 
-body.editor-minimized .body-wrapper {
+/* body-wrapper required to circumvent this bug in webkit: https://bugs.webkit.org/show_bug.cgi?id=77811 */
+.stage-wrapper {
+  position: absolute;
+  left: 0;
+  top: 62px; /* compensate for header */
+
+  right: 0;
+
+}
+
+body.editor-minimized .stage-wrapper {
   right: 0;
 }
 
